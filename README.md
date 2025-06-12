@@ -1,161 +1,77 @@
-# Car-Detection
+# 🚗 Car Detection System
 
+A robust computer vision system for vehicle detection, license plate recognition (with Arabic support), speed estimation, and driving behavior analysis—specifically tailored for Tunisian traffic surveillance.
 
+---
 
-# Car Detection System - GitHub README
+## 📌 Overview
 
-Based on my analysis of the repository, here's a comprehensive GitHub README for your Car Detection project:
+This project integrates state-of-the-art deep learning techniques and computer vision tools to analyze traffic videos. It can:
+- Detect and track vehicles in real-time.
+- Recognize license plates, including Arabic text.
+- Estimate vehicle speed from video footage.
+- Analyze driver behavior for safety monitoring.
+- Collect and preprocess vehicle data from the Tunisian marketplace **Tayara.tn**.
 
-```markdown
-# Car Detection System
+---
 
-A comprehensive computer vision system for vehicle detection, license plate recognition, and driving behavior analysis, specifically designed for Tunisian traffic monitoring.
+## ✨ Key Features
 
-## Overview
+### 🚘 Vehicle Detection & Tracking
+- Real-time detection using YOLOv8.
+- Multi-object tracking with ByteTrack.
+- Unique vehicle ID assignment across frames.
+- Speed calculation using frame-difference analysis.
 
-This project implements an advanced car detection system that combines multiple AI models to analyze traffic videos and images. The system can detect vehicles, recognize license plates (including Arabic text), calculate vehicle speeds, and classify driving behaviors.
+### 🔠 License Plate Recognition
+- Automatic license plate detection.
+- Arabic and English OCR using EasyOCR.
+- Support for Tunisian plate formats.
+- Custom-trained model for high precision.
 
-## Features
+### 🧠 Driving Behavior Classification
+- Person detection within vehicles.
+- Classifies driver behavior (e.g., phone usage, seatbelt detection).
+- Real-time behavior flagging.
 
-### 🚗 Vehicle Detection & Tracking
-- Real-time vehicle detection using YOLO models
-- Multi-object tracking with ByteTrack
-- Speed calculation and monitoring
-- Vehicle ID assignment and persistence
+### 🧹 Data Collection & Processing
+- Web scraping of Tunisian car listings via Tayara.tn.
+- Automated image download & high-res enhancement.
+- Clean dataset preparation for training models.
 
-### 🔤 License Plate Recognition
-- Automatic license plate detection
-- OCR text extraction using EasyOCR
-- Support for Arabic and English text
-- Tunisian license plate format recognition
+---
 
-### 👤 Driving Behavior Analysis
-- Safe driving behavior classification
-- Person detection within vehicles
-- Real-time behavioral assessment
+## 🧰 Tech Stack
 
-### 📊 Data Collection Pipeline
-- Web scraping from Tayara.tn marketplace
-- Automated image downloading and processing
-- Data preprocessing for model training
+| Area              | Tools & Libraries                       |
+|-------------------|------------------------------------------|
+| **Detection**     | Ultralytics YOLOv8, OpenCV               |
+| **OCR**           | EasyOCR (Arabic + English)               |
+| **ML Framework**  | PyTorch                                  |
+| **Web Scraping**  | Selenium                                 |
+| **Data Handling** | NumPy, Pandas                            |
+| **Visualization** | Matplotlib, Pillow                       |
 
-## Technical Stack
+---
 
-- **Computer Vision**: OpenCV, Ultralytics YOLO
-- **OCR**: EasyOCR with Arabic language support
-- **Machine Learning**: PyTorch, Custom YOLO models
-- **Data Processing**: NumPy, Pandas
-- **Web Scraping**: Selenium WebDriver
-- **Image Processing**: Pillow, Matplotlib
+## 🧠 Models
 
-## Models Used
+| Model Type               | File Name                | Description                            |
+|--------------------------|--------------------------|----------------------------------------|
+| Vehicle Detection        | `yolov8x.pt`             | YOLOv8 for real-time car detection     |
+| License Plate Detection  | `plate_detection.pt`     | Custom YOLO model for plate detection  |
+| Driving Behavior         | `yolo_classification.pt` | Detects unsafe driver behavior         |
 
-The system utilizes multiple specialized models:
-- **Vehicle Detection**: YOLO11x for general vehicle detection
-- **License Plate Detection**: Custom trained model (`plate_detection.pt`)
-- **Driving Behavior**: Custom classification model (`yolo_classification.pt`)
+---
 
-## Installation
+## ⚙️ Installation
 
-### Prerequisites
+### ✅ Prerequisites
 - Python 3.8+
-- CUDA-compatible GPU (recommended)
+- CUDA-compatible GPU (optional but recommended)
 - Git
 
-### Required Dependencies
+### 📦 Install Dependencies
+
 ```bash
-pip install ultralytics
-pip install opencv-python
-pip install easyocr
-pip install Pillow
-pip install numpy
-pip install pandas
-pip install selenium
-pip install matplotlib
-```
-
-## Usage
-
-### 1. Data Collection
-Run the scraping notebooks to collect training data:
-- `tayara_scraping.ipynb` - Scrape vehicle listings
-- `tayara_ImageDownload.ipynb` - Download vehicle images
-
-### 2. Video Processing
-Use the main workflow for video analysis:
-- `workflow (1).ipynb` - Complete detection pipeline
-
-### Key Functions
-
-#### Vehicle Detection and Tracking
-The system processes video frames to detect and track vehicles with unique IDs.
-
-#### License Plate Recognition
-Specialized OCR processing for Tunisian license plates with Arabic text support.
-
-#### Speed Calculation
-Real-time speed estimation based on vehicle movement between frames.
-
-## Configuration
-
-### Model Paths
-Configure your model paths in the notebook:
-- Plate detection model: `models/plate_detection.pt`
-- Safe driving model: `models/yolo_classification.pt`
-
-### Video Input
-Set your video path for processing:
-- Supported formats: MP4, AVI, MOV
-- Recommended: 30 FPS for accurate speed calculation
-
-## Features in Detail
-
-### Arabic Text Support
-The system includes specialized handling for Arabic license plates and can format text in the traditional Tunisian format.
-
-### Multi-Modal Analysis
-- **Visual Detection**: YOLO-based object detection
-- **Text Recognition**: EasyOCR for license plate reading  
-- **Behavioral Analysis**: Custom classification for driving patterns
-
-### Performance Optimization
-- Frame skipping for real-time processing
-- GPU acceleration support
-- Efficient memory management
-
-## Data Pipeline
-
-### Web Scraping Component
-Automated data collection from Tayara.tn marketplace, extracting vehicle information and images for model training.
-
-### Image Processing
-High-resolution image downloading with URL modification for better quality training data.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Ultralytics for YOLO implementation
-- EasyOCR team for Arabic OCR support
-- OpenCV community for computer vision tools
-
-## Contact
-
-For questions and support, please open an issue in the GitHub repository.
-```
-
-This README is based on the comprehensive analysis of your codebase, which includes vehicle detection capabilities [1](#0-0) , license plate recognition with Arabic text support [2](#0-1) , speed calculation functionality [3](#0-2) , and a complete data collection pipeline through web scraping [4](#0-3)  and image downloading [5](#0-4) .
-
-## Notes
-
-The README reflects the multi-faceted nature of your project, which combines computer vision, OCR, and web scraping technologies. The system appears to be specifically designed for Tunisian traffic monitoring, with special attention to Arabic license plate recognition and local marketplace data collection from Tayara.tn. The modular structure with separate notebooks for different functionalities makes it easy for users to understand and contribute to specific components.
+pip install -r requirements.txt
